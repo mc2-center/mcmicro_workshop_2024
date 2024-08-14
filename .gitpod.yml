@@ -1,12 +1,43 @@
-image: nfcore/gitpod:latest
+image: gitpod/workspace-full-vnc:2024-05-27-17-11-15
 tasks:
-  - name: Update Nextflow
-    command: |
-      nextflow self-update
-  - name: unset JAVA_TOOL_OPTIONS
-    command: |
-      unset JAVA_TOOL_OPTIONS
+  - name: Install Nextflow
+    init: |
+      curl -s https://get.nextflow.io | bash
+      chmod +x nextflow
+      mkdir -p ~/.local/bin
+      mv nextflow ~/.local/bin
+      exit
+  - name: Install QuPath
+    init: |
+      cd
+      curl -OJL https://github.com/qupath/qupath/releases/download/v0.5.1/QuPath-v0.5.1-Linux.tar.xz
+      tar xf QuPath-v0.5.1-Linux.tar.xz
+      rm QuPath-v0.5.1-Linux.tar.xz
+      ln -s ~/QuPath-v0.5.1-Linux/QuPath/bin/QuPath ~/.local/bin
+      exit
+  - name: Download exemplar-002
+    init: |
+      cd $GITPOD_REPO_ROOT
+      mkdir -p exemplar-002
+      cd exemplar-002
+      curl -O https://mcmicro.s3.amazonaws.com/exemplars/002/exemplar-002/raw/exemplar-002-cycle-03.ome.tiff &
+      curl -O https://mcmicro.s3.amazonaws.com/exemplars/002/exemplar-002/raw/exemplar-002-cycle-04.ome.tiff &
+      curl -O https://mcmicro.s3.amazonaws.com/exemplars/002/exemplar-002/raw/exemplar-002-cycle-05.ome.tiff &
+      curl -O https://mcmicro.s3.amazonaws.com/exemplars/002/exemplar-002/illumination/exemplar-002-cycle-03-dfp.tif &
+      curl -O https://mcmicro.s3.amazonaws.com/exemplars/002/exemplar-002/illumination/exemplar-002-cycle-03-ffp.tif &
+      curl -O https://mcmicro.s3.amazonaws.com/exemplars/002/exemplar-002/illumination/exemplar-002-cycle-04-dfp.tif &
+      curl -O https://mcmicro.s3.amazonaws.com/exemplars/002/exemplar-002/illumination/exemplar-002-cycle-04-ffp.tif &
+      curl -O https://mcmicro.s3.amazonaws.com/exemplars/002/exemplar-002/illumination/exemplar-002-cycle-05-dfp.tif &
+      curl -O https://mcmicro.s3.amazonaws.com/exemplars/002/exemplar-002/illumination/exemplar-002-cycle-05-ffp.tif &
+      wait
+      exit
+  - name: Web server
+    command: python -m http.server 8000
+  - name: Terminal
+    command: clear; bash
 
-vscode:
-  extensions:
-    - mechatroner.rainbow-csv # Highlight columns in csv files in different colors
+ports:
+  - port: 6080
+    onOpen: open-browser
+  - port: 8000
+    onOpen: open-preview

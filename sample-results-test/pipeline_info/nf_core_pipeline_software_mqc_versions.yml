@@ -1,0 +1,9 @@
+ASHLAR:
+  ashlar: 1.18.0
+DEEPCELL_MESMER:
+  deepcell_mesmer: 0.4.1
+MCQUANT:
+  mcquant: 1.5.4
+Workflow:
+    nf-core/mcmicro: v2.0.0-g8d1fdd0
+    Nextflow: 24.04.4

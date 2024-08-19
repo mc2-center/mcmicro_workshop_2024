@@ -1,0 +1,5 @@
+Sample	mcquant	ashlar	nf-core/mcmicro	deepcell_mesmer	Nextflow
+ASHLAR		1.18.0			
+DEEPCELL_MESMER				0.4.1	
+MCQUANT	1.5.4				
+Workflow			v2.0.0-g8d1fdd0		24.4.4

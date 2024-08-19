@@ -5,6 +5,7 @@ tasks:
       cat << EOF > ~/.bashrc.d/00-cwd
       test -e "$GITPOD_REPO_ROOT" && cd "$GITPOD_REPO_ROOT"
       EOF
+      exit
   - name: Install Nextflow
     init: |
       curl -s https://get.nextflow.io | bash

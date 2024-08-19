@@ -7,13 +7,14 @@ tasks:
       mkdir -p ~/.local/bin
       mv nextflow ~/.local/bin
       exit
-  - name: Install QuPath
+  - name: Install packages
     init: |
-      cd
-      curl -OJL https://github.com/qupath/qupath/releases/download/v0.5.1/QuPath-v0.5.1-Linux.tar.xz
-      tar xf QuPath-v0.5.1-Linux.tar.xz
-      rm QuPath-v0.5.1-Linux.tar.xz
-      ln -s ~/QuPath-v0.5.1-Linux/QuPath/bin/QuPath ~/.local/bin
+      sudo apt update
+      sudo apt-get install -y libegl1 libdbus-1-3 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xinput0 libxcb-xfixes0 x11-utils libxcb-cursor0 libopengl0 libegl1-mesa
+      exit
+  - name: Install Napari and Jupyter
+    init: |
+      pip install napari[all] notebook
       exit
   - name: Download exemplar-002
     init: |
@@ -31,8 +32,6 @@ tasks:
       curl -O https://mcmicro.s3.amazonaws.com/exemplars/002/exemplar-002/illumination/exemplar-002-cycle-05-ffp.tif &
       wait
       exit
-  - name: Web server
-    command: python -m http.server 8000
   - name: Terminal
     command: clear; bash
 
@@ -40,9 +39,9 @@ ports:
   - port: 5900
     onOpen: ignore
   - port: 6080
-    onOpen: open-browser
+    onOpen: ignore
   - port: 8000
-    onOpen: open-preview
+    onOpen: ignore
 
 vscode:
   extensions:

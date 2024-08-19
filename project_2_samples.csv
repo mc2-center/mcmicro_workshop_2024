@@ -1,4 +1,0 @@
-sample,cycle_number,channel_count,image_tiles,dfp,ffp
-exemplar-002,1,4,/workspace/mcmicro_workshop_2024/exemplar-002/exemplar-002-cycle-03.ome.tiff,/workspace/mcmicro_workshop_2024/exemplar-002/exemplar-002-cycle-03-dfp.tif,/workspace/mcmicro_workshop_2024/exemplar-002/exemplar-002-cycle-03-ffp.tif
-exemplar-002,2,4,/workspace/mcmicro_workshop_2024/exemplar-002/exemplar-002-cycle-04.ome.tiff,/workspace/mcmicro_workshop_2024/exemplar-002/exemplar-002-cycle-04-dfp.tif,/workspace/mcmicro_workshop_2024/exemplar-002/exemplar-002-cycle-04-ffp.tif
-exemplar-002,3,4,/workspace/mcmicro_workshop_2024/exemplar-002/exemplar-002-cycle-05.ome.tiff,/workspace/mcmicro_workshop_2024/exemplar-002/exemplar-002-cycle-05-dfp.tif,/workspace/mcmicro_workshop_2024/exemplar-002/exemplar-002-cycle-05-ffp.tif

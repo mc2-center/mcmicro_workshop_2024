@@ -38,11 +38,10 @@ tasks:
     command: clear; bash
 
 ports:
-  - port: 5900
-    onOpen: ignore
   - port: 6080
+    description: Remote desktop access
     onOpen: ignore
-  - port: 8888
+  - port: 5900
     onOpen: ignore
 
 vscode:

@@ -4,7 +4,17 @@ test -e "$GITPOD_REPO_ROOT" && cd "$GITPOD_REPO_ROOT"
 EOF
 
 
-# Initialize empty keyring for Chromium to avoid keyring dialog.
+# Use Chrome to open html files.
+cat <<EOF > ~/.config/mimeapps.list
+[Default Applications]
+text/html=google-chrome.desktop
+
+[Added Associations]
+text/html=google-chrome.desktop;
+EOF
+
+
+# Initialize empty keyring for Chrome to avoid keyring dialog.
 mkdir -p ~/.local/share/keyrings/
 echo -n "Default_keyring" > ~/.local/share/keyrings/default
 cat > ~/.local/share/keyrings/Default_keyring.keyring << EOF

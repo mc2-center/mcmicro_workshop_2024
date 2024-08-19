@@ -1,5 +1,10 @@
 image: gitpod/workspace-full-vnc:2024-05-27-17-11-15
 tasks:
+  - name: Configure shell
+    init: |
+      cat << EOF > ~/.bashrc.d/00-cwd
+      test -e "$GITPOD_REPO_ROOT" && cd "$GITPOD_REPO_ROOT"
+      EOF
   - name: Install Nextflow
     init: |
       curl -s https://get.nextflow.io | bash

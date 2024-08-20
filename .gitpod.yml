@@ -1,21 +1,21 @@
 image: gitpod/workspace-full-vnc:2024-05-27-17-11-15
 tasks:
   - name: Configure shell
-    init: bash scripts/profile.sh ; exit
+    before: bash scripts/profile.sh ; exit
   - name: Install Nextflow
-    init: |
+    before: |
       curl -s https://get.nextflow.io | bash
       chmod +x nextflow
       mkdir -p ~/.local/bin
       mv nextflow ~/.local/bin
       exit
   - name: Install packages
-    init: |
+    before: |
       sudo apt update
       sudo apt-get install -y libegl1 libdbus-1-3 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xinput0 libxcb-xfixes0 x11-utils libxcb-cursor0 libopengl0 libegl1-mesa mousepad
       exit
   - name: Install python packages
-    init: |
+    before: |
       pip install napari[all] notebook pandas matplotlib
       exit
   - name: Download exemplar-002

@@ -23,6 +23,10 @@ tasks:
     before: |
       pip install napari[all] notebook pandas matplotlib
       exit
+  - name: Pull containers
+    before: |
+      for c in quay.io/biocontainers/ashlar:1.18.0--pyhdfd78af_0 quay.io/biocontainers/multiqc:1.17--pyhdfd78af_0 labsyspharm/quantification:1.5.4 wuennemannflorian/deepcell_mesmer:0.4.1_noentry; do docker pull "$c"; done
+      exit
   - name: Download exemplar-002
     init: |
       cd $GITPOD_REPO_ROOT

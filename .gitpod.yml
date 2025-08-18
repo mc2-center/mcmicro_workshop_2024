@@ -2,6 +2,10 @@ image: gitpod/workspace-full-vnc:2024-05-27-17-11-15
 tasks:
   - name: Configure shell
     before: bash scripts/profile.sh ; exit
+  - name: Install Java
+    before: |
+      sdk install java 24-tem < /dev/null
+      sdk default java 24-tem
   - name: Install Nextflow
     before: |
       curl -s https://get.nextflow.io | bash

@@ -6,6 +6,7 @@ tasks:
     before: |
       sdk install java 24-tem < /dev/null
       sdk default java 24-tem
+      exit
   - name: Install Nextflow
     before: |
       curl -s https://get.nextflow.io | bash
